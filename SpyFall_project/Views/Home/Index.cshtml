@@ -1,0 +1,79 @@
+﻿@model List<SpyFall_project.Models.PortScanResult>
+
+@{
+    ViewData["Title"] = "Port Scanning";
+}
+
+<form method="post" class="mt-4">
+    <h2 class="text-center mb-4">Port Scanner</h2> <!-- Add a heading for better context -->
+    <div class="form-group row m-2">
+        <label for="targetIp" class="col-sm-2 col-form-label">Target IP</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control custom-input" id="targetIp" name="targetIp" required placeholder="e.g., 192.168.1.1" />
+        </div>
+    </div>
+    <div class="form-group row m-2">
+        <label for="startPort" class="col-sm-2 col-form-label">From:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control custom-input" id="startPort" name="startPort" value="50" required placeholder="Starting port number" />
+        </div>
+    </div>
+    <div class="form-group row m-2">
+        <label for="endPort" class="col-sm-2 col-form-label">To:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control custom-input" id="endPort" name="endPort" value="60" required placeholder="Ending port number" />
+        </div>
+    </div>
+    <div class="form-group row m-2">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary btn-lg me-2" asp-action="Scan">Get Open Ports</button>
+            <button type="submit" class="btn btn-primary btn-lg" asp-action="GetServices">Get Quick Services</button>
+        </div>
+    </div>
+</form>
+
+@if (Model.Count > 0)
+{
+    <h3 class="mt-5">Scan Results</h3>
+    <div class="table-responsive d-block mt-3 mb-5">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Port Number</th>
+                    <th scope="col">Status</th>
+                    @if (Model[0].Service != string.Empty)
+                    {
+                        <th scope="col">Service</th>
+                    }
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in Model)
+                {
+                    <tr data-port="@result.PortNumber">
+                        <td>@result.PortNumber</td>
+                        <td>@result.Status</td>
+                        @if (result.Service != string.Empty)
+                        {
+                            <td>@result.Service</td>
+                        }
+                        <td>
+                            @if (result.Status == "close")
+                            {
+                                <button class="btn btn-secondary disabled">Deep Scanning</button>
+                            }
+                            else
+                            {
+                                <form method="post" class="d-inline">
+                                    <input type="hidden" value="@result.PortNumber" name="PortNumber" />
+                                    <button type="submit" class="btn btn-secondary" asp-action="DeepScan">Deep Scanning</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

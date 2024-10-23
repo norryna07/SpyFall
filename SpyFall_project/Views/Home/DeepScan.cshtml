@@ -1,0 +1,44 @@
+﻿@model List<SpyFall_project.Models.DeepScanResult>
+@{
+    ViewData["Title"] = "Deep Scan";
+}
+
+@if (Model.Count > 0)
+{
+    <h3 class="mt-5">Scan Results for @Model[0].PortNumber</h3>
+    <div class="table-responsive d-block  mt-3 mb-5">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Service Tested</th>
+                    <th scope="col">Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in Model)
+                {
+                    <tr>
+
+                        <td>@result.ServiceTest</td>
+                        <td>@result.ServiceStatus</td>
+                        <td>
+                            @if (result.ServiceStatus == "close")
+                            {
+                                <button class="btn btn-primary disabled">Exploit</button>
+                            }
+                            @if (result.ServiceStatus != "close")
+                            {
+                                <form method="post">
+                                    <input value="@result.PortNumber" class="d-none" name="PortNumber" />
+                                    <input value="@result.ServiceTest" class="d-none" name="Service" />
+                                    <button class="btn btn-primary" asp-action="Exploit">Exploit</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "DNS request";
+}
+@model SpyFall_project.Models.DNSPair
+
+<form method="post" class="mt-4">
+    <div class="form-group mb-3">
+        <label class="form-label" for="inpName">Enter Domain Name</label>
+        <input class="form-control custom-input" id="inpName" type="text" name="inpName" placeholder="e.g., example.com" required />
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary btn-lg me-2" asp-action="GetAddressByNameDNS">Get IP Address</button>
+    </div>
+
+    @if (Model != null)
+    {
+        <div class="mt-4">
+            <h4>Result:</h4>
+            <p><strong>Domain Name:</strong> @Model.Name</p>
+            <p><strong>IP Address:</strong> @Model.IpAddress</p>
+        </div>
+    }
+</form>

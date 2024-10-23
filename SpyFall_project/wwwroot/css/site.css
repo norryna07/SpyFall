@@ -1,0 +1,157 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #1b0a35;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #1b0a35; /* Dark background for navbar */
+}
+
+.navbar .navbar-brand, .navbar .nav-link {
+  color: #a78ad1 !important; /* Light color for text in the navbar */
+}
+
+/* Button styling */
+
+.btn-primary:focus,
+.btn-primary:active {
+  box-shadow: none; /* Disable Bootstrap's default blue shadow */
+  outline: none;    /* Remove any outline if present */
+}
+
+.btn-primary {
+  background-color: #a78ad1;
+  border-color: #8369ab;
+}
+
+.btn-primary:hover {
+  background-color: #8369ab;
+  border-color: #a78ad1;
+}
+
+.btn-primary:focus, 
+.btn-primary:active {
+  background-color: #8369ab;
+  border-color: #a78ad1;
+  box-shadow: 0 0 0 0.2rem rgba(167, 138, 209, 0.5);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  background-color: #8369ab;
+  border-color: #a78ad1;
+}
+
+.btn-secondary:focus,
+.btn-secondary:active {
+  box-shadow: none; /* Disable Bootstrap's default blue shadow */
+  outline: none;    /* Remove any outline if present */
+  border: none;
+}
+
+
+.btn-secondary:focus, 
+.btn-secondary:active{
+  box-shadow: 0 0 0 0.2rem rgba(167, 138, 209, 0.5);
+}
+
+/* Main content styling */
+main {
+  flex: 1;
+  margin-bottom: 20px;
+  background-color: #1b0a35; /* Match the background color of the footer */
+  color: #a78ad1; /* Match the text color of the footer */
+}
+
+/* Footer styling */
+footer {
+  background-color: #1b0a35;
+  color: #a78ad1;
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid #e7e7e7;
+  width: 100%;
+}
+
+/* Main content links */
+a {
+  color: #a78ad1;
+}
+
+th {
+  background-color: #1b0a35; /* Darker background for table header */
+  color: #a78ad1; /* Text color for header */
+}
+
+td {
+  border-color: #a78ad1; /* Border color for table cells */
+  color: white;
+}
+
+
+tr:hover {
+  background-color: #3c2f60; /* Highlight row on hover */
+}
+
+.card {
+  background-color: #2c1e4c; /* Dark card background */
+  color: #a78ad1; /* Light text color in card */
+}
+
+.card h3 {
+  color: #a78ad1; /* Header color in card */
+}
+
+.ol {
+  padding-left: 1.5em; /* Increase padding for ordered list */
+}
+
+strong {
+  color: #a78ad1; /* Strong text color */
+}
+
+/* Custom input field styles */
+.custom-input {
+  background-color: #2c1e4c; /* Dark background for inputs */
+  color: #a78ad1; /* Text color */
+  border: 1px solid #a78ad1; /* Border color */
+}
+
+.custom-input::placeholder {
+  color: #a78ad1; /* Placeholder text color */
+  opacity: 0.7; /* Slight transparency for placeholder */
+}
+
+/* Input field focus styles */
+.custom-input:focus {
+  background-color: #2c1e4c; /* Maintain dark background on focus */
+  color: #a78ad1; /* Maintain text color on focus */
+  border-color: #8369ab; /* Border color on focus */
+  box-shadow: none; /* Remove Bootstrap's default focus shadow */
+}
