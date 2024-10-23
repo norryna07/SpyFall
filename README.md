@@ -1,3 +1,4 @@
+![](banner.png)
 # SpyFall - [website](http://spyfall.nodnor.com)
 
 ## Table of contents
